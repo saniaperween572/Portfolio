@@ -1,0 +1,10 @@
+# Portfolio Website - Requirements
+
+## Tools & Software
+- VS Code (code editor)
+- Any modern web browser (Chrome, Firefox, Edge)
+- Git (version control)
+
+## Languages & Technologies
+- HTML5
+- CSS3

@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saniya Perween - Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset & Base */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            line-height: 1.7;
+            color: #2d3436;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
+            min-height: 100vh;
+        }
+
+        /* ===== HEADER & NAVIGATION ===== */
+        header {
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: #fff;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        nav {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        nav a {
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover,
+        nav a:focus {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: #fff;
+            text-align: center;
+            padding: 5rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 50%, rgba(168, 237, 234, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 50%, rgba(254, 214, 227, 0.08) 0%, transparent 50%);
+            animation: float 8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero .profile-picture {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid rgba(168, 237, 234, 0.6);
+            box-shadow: 0 0 40px rgba(168, 237, 234, 0.2);
+            margin-bottom: 1.5rem;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .hero .profile-picture:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 60px rgba(168, 237, 234, 0.35);
+        }
+
+        .hero h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .tagline {
+            font-size: 1.15rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.75);
+            max-width: 500px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            background: linear-gradient(135deg, #a8edea, #7ec8c8);
+            color: #0f0c29;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(168, 237, 234, 0.3);
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(168, 237, 234, 0.45);
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        main {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        section {
+            background: #fff;
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+            scroll-margin-top: 100px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        section:nth-child(1) { animation-delay: 0.1s; }
+        section:nth-child(2) { animation-delay: 0.25s; }
+        section:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #2d3436;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.6rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+            border-radius: 2px;
+        }
+
+        /* ===== ABOUT SECTION ===== */
+        .about-content {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .about-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            color: #555;
+            font-size: 1.02rem;
+        }
+
+        .about-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ===== SKILLS SECTION ===== */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-category {
+            background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid rgba(168, 237, 234, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            border-color: rgba(168, 237, 234, 0.5);
+            box-shadow: 0 4px 16px rgba(168, 237, 234, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .skill-category h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            background: linear-gradient(135deg, #302b63, #24243e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .skill-category ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .skill-category ul li {
+            padding: 0.45rem 0;
+            padding-left: 1.4rem;
+            position: relative;
+            color: #555;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+
+        .skill-category ul li::before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            background: linear-gradient(135deg, #a8edea, #7ec8c8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .skill-category ul li:hover {
+            color: #2d3436;
+        }
+
+        /* ===== CONTACT SECTION ===== */
+        .contact-wrapper {
+            display: flex;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-form {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .contact-info {
+            flex: 0 0 260px;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-info-card {
+            background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%);
+            border-radius: 12px;
+            padding: 1.2rem;
+            border: 1px solid rgba(168, 237, 234, 0.2);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .contact-info-card:hover {
+            border-color: rgba(168, 237, 234, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .contact-info-card .icon {
+            font-size: 1.6rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .contact-info-card h4 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #888;
+            margin-bottom: 0.3rem;
+        }
+
+        .contact-info-card a {
+            color: #302b63;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .contact-info-card a:hover {
+            color: #7ec8c8;
+        }
+
+        .form-group {
+            margin-bottom: 1.3rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.4rem;
+            color: #2d3436;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid #e8ecf1;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            font-family: inherit;
+            background: #f8f9ff;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #a8edea;
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(168, 237, 234, 0.15);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        button[type="submit"] {
+            background: linear-gradient(135deg, #302b63, #24243e);
+            color: #fff;
+            border: none;
+            padding: 0.8rem 2.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 16px rgba(48, 43, 99, 0.25);
+        }
+
+        button[type="submit"]:hover,
+        button[type="submit"]:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(48, 43, 99, 0.35);
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            color: #fff;
+            background: linear-gradient(135deg, #302b63, #24243e);
+            padding: 0.6rem 1.4rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(48, 43, 99, 0.2);
+        }
+
+        .social-links a:hover,
+        .social-links a:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(48, 43, 99, 0.3);
+            background: linear-gradient(135deg, #a8edea, #7ec8c8);
+            color: #0f0c29;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+            padding: 2.5rem 2rem;
+            margin-top: 1rem;
+        }
+
+        footer .footer-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        footer p {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        footer .footer-links {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        footer .footer-links a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+
+        footer .footer-links a:hover {
+            color: #a8edea;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 0.8rem;
+                text-align: center;
+            }
+
+            nav {
+                justify-content: center;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .hero .tagline {
+                font-size: 1rem;
+            }
+
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .contact-wrapper {
+                flex-direction: column;
+            }
+
+            .contact-info {
+                flex: 1;
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+
+            .contact-info-card {
+                flex: 1;
+                min-width: 140px;
+            }
+
+            section {
+                padding: 1.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h2 {
+                font-size: 1.6rem;
+            }
+
+            nav a {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.85rem;
+            }
+
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER & NAVIGATION ===== -->
+    <header>
+        <h1>Saniya Perween</h1>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero">
+        <div class="hero-content">
+            <img
+                src="images/profile.jpg"
+                alt="Portrait photo of Saniya Perween"
+                class="profile-picture"
+            >
+            <h2>Saniya Perween</h2>
+            <p class="tagline">Aspiring Web Developer &amp; Creative Problem Solver</p>
+            <a href="#about" class="hero-cta">Learn More About Me</a>
+        </div>
+    </section>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main>
+
+        <!-- About Section -->
+        <section id="about">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-icon">&#x1F4BB;</div>
+                <div class="about-text">
+                    <p>
+                        Hello! I am a passionate web development enthusiast eager to build
+                        modern, accessible, and user-friendly websites. I enjoy turning ideas
+                        into reality through clean and efficient code.
+                    </p>
+                    <p>
+                        I am currently expanding my skill set by learning front-end and
+                        back-end technologies, with a focus on creating responsive designs
+                        that work across all devices.
+                    </p>
+                    <p>
+                        When I'm not coding, I enjoy exploring new technologies, reading about
+                        software engineering best practices, and contributing to open-source
+                        projects.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2>Skills</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>&#x1F3A8; Front-End</h3>
+                    <ul>
+                        <li>HTML5 &amp; Semantic Markup</li>
+                        <li>CSS3 &amp; Flexbox / Grid</li>
+                        <li>JavaScript (ES6+)</li>
+                        <li>Responsive Web Design</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>&#x2699;&#xFE0F; Back-End</h3>
+                    <ul>
+                        <li>Python</li>
+                        <li>Node.js</li>
+                        <li>SQL &amp; Databases</li>
+                        <li>REST APIs</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>&#x1F6E0;&#xFE0F; Tools &amp; Other</h3>
+                    <ul>
+                        <li>Git &amp; GitHub</li>
+                        <li>VS Code</li>
+                        <li>Command Line / Terminal</li>
+                        <li>Problem Solving</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <div class="contact-wrapper">
+                <form class="contact-form" action="#" method="post" novalidate>
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Enter your name"
+                            required
+                            minlength="2"
+                            maxlength="100"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="you@example.com"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <select id="subject" name="subject" required>
+                            <option value="" disabled selected>Select a subject</option>
+                            <option value="general">General Inquiry</option>
+                            <option value="collaboration">Collaboration</option>
+                            <option value="feedback">Feedback</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea
+                            id="message"
+                            name="message"
+                            placeholder="Write your message here..."
+                            required
+                            minlength="10"
+                            maxlength="1000"
+                        ></textarea>
+                    </div>
+
+                    <button type="submit">Send Message</button>
+                </form>
+
+                <div class="contact-info">
+                    <div class="contact-info-card">
+                        <div class="icon">&#x1F4E7;</div>
+                        <h4>Email</h4>
+                        <a href="mailto:saniaperween572@gmail.com">saniaperween572@gmail.com</a>
+                    </div>
+                    <div class="contact-info-card">
+                        <div class="icon">&#x1F310;</div>
+                        <h4>GitHub</h4>
+                        <a href="https://github.com/saniaperween572" target="_blank" rel="noopener noreferrer">github.com/saniaperween572</a>
+                    </div>
+                    <div class="contact-info-card">
+                        <div class="icon">&#x1F4BC;</div>
+                        <h4>LinkedIn</h4>
+                        <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer">linkedin.com</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="social-links">
+                <a href="https://github.com/saniaperween572" target="_blank" rel="noopener noreferrer">&#x2B50; GitHub</a>
+                <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer">&#x1F517; LinkedIn</a>
+                <a href="mailto:saniaperween572@gmail.com">&#x2709;&#xFE0F; Email Me</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <p class="footer-name">Saniya Perween</p>
+        <p>&copy; 2026 All rights reserved.</p>
+        <div class="footer-links">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </footer>
+
+</body>
+</html>
