@@ -3,8 +3,28 @@
 ## Tools & Software
 - VS Code (code editor)
 - Any modern web browser (Chrome, Firefox, Edge)
-- Git (version control)
+- Git & GitHub (version control & hosting)
 
 ## Languages & Technologies
-- HTML5
-- CSS3
+- HTML5 (semantic markup)
+- CSS3 (external stylesheet)
+
+## CSS Features Used
+- CSS Custom Properties (variables)
+- Flexbox & CSS Grid layouts
+- @keyframes animations (loader, particles, morphing shapes, scroll reveal)
+- Gradient backgrounds & text
+- backdrop-filter (glassmorphism header)
+- Media queries (responsive design)
+- prefers-reduced-motion (accessibility)
+- Transitions & transforms
+- ::before / ::after pseudo-elements
+
+## Fonts (CDN)
+- Google Fonts: Inter, Playfair Display
+
+## Browser Compatibility
+- Chrome 80+
+- Firefox 75+
+- Edge 80+
+- Safari 14+
