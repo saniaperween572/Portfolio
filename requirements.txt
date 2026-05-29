@@ -8,6 +8,7 @@
 ## Languages & Technologies
 - HTML5 (semantic markup)
 - CSS3 (external stylesheet)
+- JavaScript ES6+ (external script)
 
 ## CSS Features Used
 - CSS Custom Properties (variables)
@@ -19,6 +20,19 @@
 - prefers-reduced-motion (accessibility)
 - Transitions & transforms
 - ::before / ::after pseudo-elements
+- Dark mode theme (CSS variable overrides)
+
+## JavaScript Features Used
+- DOM manipulation (getElementById, querySelector, createElement)
+- Event listeners (click, blur, input, change, submit, scroll, keydown)
+- IntersectionObserver API (scroll reveal, active nav, stat counter)
+- localStorage API (dark mode preference persistence)
+- Form validation with custom inline error messages
+- Toast notification system
+- Typing effect animation
+- Debounce function
+- IIFE (Immediately Invoked Function Expressions)
+- ES6+ features (const, let, arrow functions, template literals)
 
 ## Fonts (CDN)
 - Google Fonts: Inter, Playfair Display

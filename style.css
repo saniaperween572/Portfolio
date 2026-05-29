@@ -1,7 +1,7 @@
 /* ============================================================
    PORTFOLIO WEBSITE - STYLESHEET
    Author: Saniya Perween
-   Version: 2.0 — Professional Edition
+   Version: 3.0 — Interactive Edition
    ============================================================ */
 
 /* ===== CSS VARIABLES (Color Scheme) ===== */
@@ -239,6 +239,79 @@ nav a:hover,
 nav a:focus {
     color: #fff;
     transform: translateY(-1px);
+}
+
+/* Active nav link */
+nav a.nav-active {
+    color: #fff;
+}
+
+nav a.nav-active::before {
+    opacity: 1;
+}
+
+/* Header controls container */
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Dark mode toggle button */
+.dark-mode-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #fff;
+    font-size: 1.2rem;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-circle);
+    cursor: pointer;
+    transition: var(--transition-bounce);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.dark-mode-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(20deg) scale(1.1);
+}
+
+/* Hamburger menu button */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    z-index: 1001;
+}
+
+.hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #fff;
+    border-radius: 2px;
+    transition: var(--transition);
+    transform-origin: center;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
 }
 
 /* ===== HERO SECTION ===== */
@@ -1140,17 +1213,154 @@ footer .footer-links a:hover::after {
     width: 100%;
 }
 
+/* ===== FORM VALIDATION STATES ===== */
+.input-error {
+    border-color: #e74c3c !important;
+    box-shadow: 0 0 0 4px rgba(231, 76, 60, 0.1) !important;
+}
+
+.input-success {
+    border-color: var(--accent-teal) !important;
+    box-shadow: 0 0 0 4px rgba(0, 206, 201, 0.1) !important;
+}
+
+.field-error {
+    display: block;
+    color: #e74c3c;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-top: 0.35rem;
+    animation: shakeIn 0.3s ease;
+}
+
+@keyframes shakeIn {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-6px); }
+    50% { transform: translateX(6px); }
+    75% { transform: translateX(-3px); }
+}
+
+.char-counter {
+    display: block;
+    text-align: right;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 0.3rem;
+}
+
+/* ===== TOAST NOTIFICATIONS ===== */
+.toast-container {
+    position: fixed;
+    top: 5rem;
+    right: 1.5rem;
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    pointer-events: none;
+}
+
+.toast {
+    padding: 0.9rem 1.5rem;
+    border-radius: var(--radius-md);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #fff;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    pointer-events: auto;
+    transform: translateX(120%);
+    opacity: 0;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+                opacity 0.3s ease;
+    max-width: 340px;
+}
+
+.toast-visible {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.toast-success {
+    background: linear-gradient(135deg, #00b894, #00cec9);
+}
+
+.toast-error {
+    background: linear-gradient(135deg, #e74c3c, #fd79a8);
+}
+
+.toast-info {
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-purple-light));
+}
+
+/* ===== DARK MODE ===== */
+body.dark-mode {
+    --text-color: #e0e0e8;
+    --text-muted: #a0a0b0;
+    --bg-light: #0f0e1a;
+    --bg-lighter: #1a1930;
+    --bg-card: #1c1b2e;
+    --bg-input: #24233a;
+    --border-light: #2a2945;
+    --border-accent: rgba(108, 92, 231, 0.25);
+    --border-accent-hover: rgba(108, 92, 231, 0.5);
+    --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.4);
+    --gradient-card: linear-gradient(145deg, rgba(108, 92, 231, 0.06) 0%, rgba(253, 121, 168, 0.06) 100%);
+}
+
+body.dark-mode .section-tag {
+    background: rgba(108, 92, 231, 0.15);
+}
+
+body.dark-mode .skill-category {
+    background: var(--bg-card);
+}
+
+body.dark-mode .skill-bar {
+    background: rgba(108, 92, 231, 0.15);
+}
+
+body.dark-mode .contact-info-card {
+    background: linear-gradient(145deg, rgba(108, 92, 231, 0.06) 0%, rgba(253, 121, 168, 0.06) 100%);
+}
+
+body.dark-mode .about-icon {
+    box-shadow: 0 8px 25px rgba(108, 92, 231, 0.35);
+}
+
+body.dark-mode .stat-item {
+    background: linear-gradient(145deg, rgba(108, 92, 231, 0.08) 0%, rgba(253, 121, 168, 0.08) 100%);
+}
+
 /* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 768px) {
     header {
-        flex-direction: column;
+        flex-direction: row;
+        flex-wrap: wrap;
         gap: 0.6rem;
         text-align: center;
         padding: 0.8rem 1.5rem;
     }
 
+    .hamburger {
+        display: flex;
+    }
+
     nav {
-        justify-content: center;
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.3rem;
+        padding-top: 0.5rem;
+    }
+
+    nav.nav-open {
+        display: flex;
+    }
+
+    .header-controls {
+        gap: 0.4rem;
     }
 
     .hero {
